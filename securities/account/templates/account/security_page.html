@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Список бумаг
+{% endblock  %}
+
+{% block content %}
+
+
+
+<div class="container">
+  <div class="table-responsive">
+  <table class="table table-striped table-sm">
+
+    <thead>
+      <tr>
+        <th scope="col">Вид ценной бумаги </th>
+        <th scope="col">Тикер</th>
+        <th scope="col">картинка</th>
+        <th scope="col">Название</th>
+        <th scope="col">Количество</th>
+        <th scope="col">Средняя цена</th>
+        <th scope="col">Общая цена</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for security in home_security %}
+      <tr>
+        <td>{{ security.title}}</td>
+        <td><a href="#">{{ security.ticker}}</a></td>
+        <td><img src="{{ security.image.url }}" width="30" alt="{{security.title}}"></td>
+        <td>{{ security.name}}</td>
+        <td>{{ security.quantity}}</td>
+        <td>{{ security.get_average_price  }}</td>
+        <td>{{ security.total_price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+
+{% endblock %}
